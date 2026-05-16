@@ -57,53 +57,54 @@
 
         </div>
 
-        <!-- CỘT 2: FORM NHẬP LƯU BÚT -->
+        <!-- CỘT 2: FORM NHẬP LƯU BÚT (ĐÃ ĐƯỢC THÊM ID CHUẨN ĐỂ LIÊN KẾT GOOGLE SHEETS) -->
         <div class="form-section">
           <h1>write something ♡</h1>
-          <input type="text" placeholder="nickname..." />
-          <textarea placeholder="write your message here..."></textarea>
-          <input type="text" placeholder="song for manh..." />
-          <button>send message</button>
+          <input type="text" id="guest-name" placeholder="nickname..." required />
+          <textarea id="guest-message" placeholder="write your message here..." required></textarea>
+          <input type="text" id="guest-song" placeholder="song for manh..." />
+          <button id="submit-msg-btn">send message</button>
         </div>
 
         <!-- CỘT 3: GIAO DIỆN MUSIC PLAYER -->
         <div class="preview-section">
-<div class="music-player-card">
-    <div class="player-header">
-        <span>Now Playing</span>
-        <span class="matrix-effect">▲ ♫ ▲</span>
-    </div>
-    
-    <!-- Khung đĩa nhạc: ID album-cover này sẽ được JS thêm class "spinning" để xoay -->
-    <div class="track-cover" id="album-cover">
-        <div class="vinyl-disk">
-            <div class="vinyl-center"></div>
-        </div>
-    </div>
-    
-    <div class="track-info">
-        <div class="song-title" id="song-title">Song Title</div>
-        <div class="artist-name" id="artist-name">Artist Name</div>
-    </div>
-    
-    <div class="player-progress">
-      <div class="progress-bar" id="progress-container" style="cursor: pointer;">
-        <div class="progress-fill" id="progress-fill"></div>
-      </div>
-      <div class="time-stamp">
-        <span id="current-time">0:00</span>
-        <span id="total-time">0:00</span>
-      </div>
-    </div>
-    
-    <div class="player-controls">
-        <button class="ctrl-btn" id="prev-btn">◀◀</button>
-        <button class="ctrl-btn play" id="song-play-btn">▶</button>
-        <button class="ctrl-btn" id="next-btn">▶▶</button>
-    </div>
+          <div class="music-player-card">
+            <div class="player-header">
+                <span>Now Playing</span>
+                <span class="matrix-effect">▲ ♫ ▲</span>
+            </div>
+            
+            <!-- Khung đĩa nhạc: ID album-cover này sẽ được JS thêm class "spinning" để xoay -->
+            <div class="track-cover" id="album-cover">
+                <div class="vinyl-disk">
+                    <div class="vinyl-center"></div>
+                </div>
+            </div>
+            
+            <div class="track-info">
+                <div class="song-title" id="song-title">Song Title</div>
+                <div class="artist-name" id="artist-name">Artist Name</div>
+            </div>
+            
+            <div class="player-progress">
+              <div class="progress-bar" id="progress-container" style="cursor: pointer;">
+                <div class="progress-fill" id="progress-fill"></div>
+              </div>
+              <div class="time-stamp">
+                <span id="current-time">0:00</span>
+                <span id="total-time">0:00</span>
+              </div>
+            </div>
+            
+            <div class="player-controls">
+                <button class="ctrl-btn" id="prev-btn">◀◀</button>
+                <button class="ctrl-btn play" id="song-play-btn">▶</button>
+                <button class="ctrl-btn" id="next-btn">▶▶</button>
+            </div>
 
-    <audio id="main-audio" src=""></audio>
-</div>
+            <audio id="main-audio" src=""></audio>
+          </div>
+        </div>
 
       </div> <!-- Kết thúc .content -->
 
@@ -111,7 +112,7 @@
 
   </main>
 
-  <!-- POPUP CHỌN VÀ DECORATE AVATAR (WINDOWS BOX) - ĐÃ ĐƯỢC ĐƯA VÀO ĐÚNG VỊ TRÍ TRONG BODY -->
+  <!-- POPUP CHỌN VÀ DECORATE AVATAR (WINDOWS BOX) -->
   <div id="avatar-modal" class="modal-overlay">
     <div class="modal-window">
       
