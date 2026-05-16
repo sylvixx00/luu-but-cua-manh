@@ -379,7 +379,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Kiểm tra xem bạn bè đã điền đủ các mục bắt buộc chưa
             if (!name || !message) {
-                alert("Cậu điền thiếu nickname hoặc lời chúc mất rồi! 🥺");
+                alert("Thiếu tên sao tui biết là ai?!??!!");
                 return;
             }
 
@@ -405,7 +405,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(() => {
                 // Khi gửi thành công, hệ thống tự động thông báo và giải phóng form
-                alert("Gửi lưu bút thành công rồi nè! Cảm ơn cậu nhiều nhaaa ✨");
+                alert("Gửi thành công tới tui rùi nha!! Xin cảm ơn nhiềuuu");
                 
                 // Xóa sạch nội dung các ô nhập để sẵn sàng cho lượt viết tiếp theo
                 guestNameInput.value = '';
@@ -417,7 +417,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => {
                 console.error('Lỗi kết nối dữ liệu:', error);
-                alert("Hình như có lỗi mạng rồi, cậu kiểm tra lại xem sao nha!");
+                alert("Voãi mạng có vấn đề à...check lại xem sao");
                 submitBtn.innerText = "send message";
                 submitBtn.disabled = false;
             });

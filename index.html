@@ -17,7 +17,7 @@
       <!-- Title Bar kiểu Windows cổ điển -->
       <div class="title-bar">
         <div class="left">
-          💌 lưu bút của manh v1.0.exe
+          💌 C:\lưu bút của manh.exe
         </div>
         <div class="right">
           <span class="win-btn">_</span>
@@ -34,14 +34,14 @@
           
           <!-- Ô hiển thị Avatar sau khi đã chọn/decor -->
           <div class="sub-box avatar-box">
-            <h2 class="box-title">♡ profile ♡</h2>
+            <h2 class="box-title">♡ Your avatar ♡</h2>
             <div class="avatar-preview-container">
               <!-- Khung chứa ảnh và các sticker được đè lên -->
               <div id="main-avatar-view" class="avatar-view-wrapper">
                 <img id="current-avatar" src="https://placehold.co/100x100/000000/ff69b4?text=🖤" alt="Current Avatar">
                 <div id="main-sticker-layer" class="sticker-layer"></div>
               </div>
-              <button id="open-avatar-btn" class="edit-btn">[ Edit Profile ]</button>
+              <button id="open-avatar-btn" class="edit-btn">[ Chỉnh sửa Avatar ]</button>
             </div>
           </div>
 
@@ -60,17 +60,16 @@
         <!-- CỘT 2: FORM NHẬP LƯU BÚT (ĐÃ ĐƯỢC THÊM ID CHUẨN ĐỂ LIÊN KẾT GOOGLE SHEETS) -->
         <div class="form-section">
           <h1>write something ♡</h1>
-          <input type="text" id="guest-name" placeholder="nickname..." required />
-          <textarea id="guest-message" placeholder="write your message here..." required></textarea>
-          <input type="text" id="guest-song" placeholder="song for manh..." />
-          <button id="submit-msg-btn">send message</button>
+          <input type="text" id="guest-name" placeholder="tên hoặc biệt danh gì đó..." required />
+          <textarea id="guest-message" placeholder="lưu bút cho tui..." required></textarea>
+          <button id="submit-msg-btn">gửi ngay cho tui!!</button>
         </div>
 
         <!-- CỘT 3: GIAO DIỆN MUSIC PLAYER -->
         <div class="preview-section">
           <div class="music-player-card">
             <div class="player-header">
-                <span>Now Playing</span>
+                <span>Now Playing...</span>
                 <span class="matrix-effect">▲ ♫ ▲</span>
             </div>
             
@@ -138,33 +137,33 @@
           
           <!-- Phần 1: Chọn nguồn ảnh -->
           <div class="option-group">
-            <h3>1. Select Base Image</h3>
+            <h3>1. Chọn một con đi</h3>
             <div class="preset-avatars">
-              <img class="preset-item active" src="https://placehold.co/50x50/000000/ff69b4?text=🖤" data-type="preset">
-              <img class="preset-item" src="https://placehold.co/50x50/ffb6c1/000000?text=✿" data-type="preset">
-              <img class="preset-item" src="https://placehold.co/50x50/4b0082/ffffff?text=✝" data-type="preset">
-              <img class="preset-item" src="https://placehold.co/50x50/808080/ffffff?text=☠" data-type="preset">
+              <img class="preset-item active" src="https://i.pinimg.com/736x/11/3c/bb/113cbb728039865b5840f372d9b5fdfb.jpg" data-type="preset">
+              <img class="preset-item" src="https://i.pinimg.com/736x/10/87/69/10876956d4d6c16890a70c1527977a78.jpg" data-type="preset">
+              <img class="preset-item" src="https://i.pinimg.com/736x/d5/d5/6c/d5d56c9af10b3a3c66d5ddbf95f561c7.jpg" data-type="preset">
+              <img class="preset-item" src="https://i.pinimg.com/736x/84/39/26/84392617a9a5c05faadf734f4a06988e.jpg" data-type="preset">
             </div>
             <div class="upload-zone">
-              <label for="avatar-upload" class="file-upload-btn">[ Upload from Device... ]</label>
+              <label for="avatar-upload" class="file-upload-btn">[ Tải lên từ thiết bị... ]</label>
               <input type="file" id="avatar-upload" accept="image/*" style="display: none;" />
             </div>
           </div>
 
           <!-- Phần 2: Chọn Sticker Decorate -->
           <div class="option-group">
-            <h3>2. Add Decorations (Click to add)</h3>
+            <h3>2. Trang trí thêm (Click to add)</h3>
             <div class="sticker-presets">
               <span class="sticker-item" data-sticker="🎀">🎀 (Nơ hồng)</span>
               <span class="sticker-item" data-sticker="✝️">✝️ (Thánh giá)</span>
-              <span class="sticker-item" data-sticker="⭐">⭐ (Sao nhỏ)</span>
+              <span class="sticker-item" data-sticker="⭐">⭐ (Ngôi sao)</span>
               <span class="sticker-item" data-sticker="🩹">🩹 (Băng cá nhân)</span>
-              <span class="sticker-item" data-sticker="🪽">🪽 (Cánh thiên thần)</span>
+              <span class="sticker-item" data-sticker="💩">💩 (Cục cớt)</span>
             </div>
           </div>
 
           <!-- Nút hoàn tất -->
-          <button id="save-avatar-btn" class="win-action-btn">APPLY CHANGES</button>
+          <button id="save-avatar-btn" class="win-action-btn">HOÀN TẤT</button>
 
         </div>
       </div>

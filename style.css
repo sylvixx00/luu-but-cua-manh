@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+/* Nhúng font Pixel chuẩn cổ điển */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 *{
   margin: 0;
@@ -7,10 +8,12 @@
 }
 
 body{
-  font-family: 'Inter', sans-serif;
+  /* Đổi sang font Pixel và tăng size nhẹ để dễ đọc */
+  font-family: 'VT323', monospace;
+  font-size: 18px;
   background: 
     radial-gradient(circle at top, rgba(255,105,180,0.15), transparent 40%),
-    #050505; /* Đen sâu hơn tăng vibe Jirai Kei */
+    #050505; 
   color: white;
   min-height: 100vh;
   overflow-x: hidden;
@@ -34,29 +37,35 @@ body{
   padding: 20px;
 }
 
-/* KHUNG WINDOWS CHÍNH */
+/* KHUNG WINDOWS CHÍNH: Tạo gờ nổi 3D (Outset) sắc nét bằng border */
 .window{
   width: 100%;
-  max-width: 1100px; /* Nới rộng một chút để vừa 3 cột */
-  background: rgba(15, 15, 15, 0.85);
-  border: 2px solid #ffb6c1; /* Viền hồng sắc nét kiểu UI cũ */
-  border-radius: 4px; /* Giảm bo tròn để ra dáng Windows cổ điển */
+  max-width: 1100px; 
+  background: rgba(15, 15, 15, 0.95); /* Tăng độ đục một chút để nhìn rõ chất cửa sổ */
+  
+  /* Viền Bevel Win2000 phối màu Jirai Kei: Trên/Trái sáng, Dưới/Phải tối */
+  border-top: 3px solid #ffd3e8;
+  border-left: 3px solid #ffd3e8;
+  border-right: 3px solid #55223c;
+  border-bottom: 3px solid #55223c;
+  border-radius: 0px; /* Phẳng góc hoàn toàn */
+  
   overflow: hidden;
   backdrop-filter: blur(15px);
-  box-shadow: 0 0 40px rgba(255, 105, 180, 0.2);
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.6); /* Đổ bóng thô cứng không nhòe */
 }
 
 /* TITLE BAR KIỂU CỔ ĐIỂN */
 .title-bar{
-  height: 38px; /* Thu gọn lại cho giống Windows cổ */
+  height: 32px; 
   background: linear-gradient(to right, #ff84b7, #ff5ca8);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 12px;
+  padding: 0 10px;
   color: black;
   font-weight: bold;
-  font-size: 13px;
+  font-size: 18px; /* Tăng size cho font pixel nổi rõ */
   border-bottom: 2px solid #ffb6c1;
   user-select: none;
 }
@@ -66,19 +75,33 @@ body{
   gap: 4px;
 }
 
-/* Các nút gạch chéo góc cửa sổ */
+/* Các nút gạch chéo góc cửa sổ gồ ghề hẳn lên */
 .win-btn {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   background: #050505;
   color: #ff84b7;
-  border: 1px solid #ff84b7;
+  
+  /* Viền nút bấm nổi 3D */
+  border-top: 1px solid #ffffd3;
+  border-left: 1px solid #ffffd3;
+  border-right: 1px solid #331122;
+  border-bottom: 1px solid #331122;
+  border-radius: 0px;
+  
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 11px;
+  font-size: 14px;
   cursor: pointer;
   font-weight: bold;
+}
+/* Hiệu ứng lún xuống khi click nút hệ thống */
+.win-btn:active {
+  border-top: 1px solid #331122;
+  border-left: 1px solid #331122;
+  border-right: 1px solid #ffffd3;
+  border-bottom: 1px solid #ffffd3;
 }
 .win-btn.X {
   background: #ff5ca8;
@@ -88,13 +111,13 @@ body{
 /* GRID LAYOUT CHIA 3 VÙNG */
 .content{
   display: grid;
-  grid-template-columns: 0.8fr 1.2fr 1fr; /* Tỉ lệ 3 cột: Widgets - Form - Player */
+  grid-template-columns: 0.8fr 1.2fr 1fr; 
 }
 
-/* CỘT 1: WIDGETS (Dọc phía bên trái) */
+/* CỘT 1: WIDGETS */
 .widgets-section {
   padding: 25px;
-  border-right: 1px dashed rgba(255, 182, 193, 0.3);
+  border-right: 2px dashed rgba(255, 182, 193, 0.3); /* Đường nét đứt dày hơn chút hợp vibe pixel */
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -102,13 +125,13 @@ body{
 
 .sub-box {
   background: rgba(0, 0, 0, 0.5);
-  border: 1px dashed #ff84b7;
+  border: 2px dashed #ff84b7;
   padding: 15px;
-  border-radius: 4px;
+  border-radius: 0px; /* Bỏ bo tròn */
 }
 
 .box-title {
-  font-size: 13px;
+  font-size: 16px;
   color: #ff84b7;
   text-transform: uppercase;
   margin-bottom: 12px;
@@ -127,10 +150,16 @@ body{
 .avatar-item {
   width: 54px;
   height: 54px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #000;
+  /* Ô chứa tạo hiệu ứng khe rãnh thụt lồi chìm xuống (Inset) */
+  border-top: 2px solid #331122;
+  border-left: 2px solid #331122;
+  border-right: 2px solid #ffd3e8;
+  border-bottom: 2px solid #ffd3e8;
+  border-radius: 0px;
   padding: 2px;
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.1s;
 }
 
 .avatar-item img {
@@ -140,8 +169,11 @@ body{
 }
 
 .avatar-item:hover, .avatar-item.active {
-  border-color: #ff5ca8;
-  box-shadow: 0 0 10px rgba(255, 92, 168, 0.5);
+  border-top: 2px solid #ff5ca8;
+  border-left: 2px solid #ff5ca8;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  box-shadow: none; /* Xóa bỏ phát sáng mờ hiện đại */
   transform: scale(1.05);
 }
 
@@ -158,50 +190,56 @@ body{
 }
 
 .days-num {
-  font-size: 42px;
+  font-size: 48px;
   font-weight: bold;
   color: #ffd3e8;
-  font-family: monospace; /* Đậm nét digital cổ điển */
-  text-shadow: 0 0 10px rgba(255, 105, 180, 0.4);
+  font-family: 'VT323', monospace;
+  text-shadow: none; /* Bỏ phát sáng mờ */
 }
 
 .days-text {
-  font-size: 11px;
+  font-size: 14px;
   text-transform: uppercase;
   color: #ff84b7;
 }
 
 .exam-sub {
-  font-size: 11px;
+  font-size: 13px;
   color: #888;
 }
 
-/* CỘT 2: FORM NHẬP CHÍNH (Ở giữa) */
+/* CỘT 2: FORM NHẬP CHÍNH */
 .form-section{
   padding: 30px;
-  border-right: 1px dashed rgba(255, 182, 193, 0.3);
+  border-right: 2px dashed rgba(255, 182, 193, 0.3);
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
 .form-section h1{
-  font-size: 24px;
+  font-size: 26px;
   margin-bottom: 4px;
   color: #ffd3e8;
   text-align: center;
 }
 
+/* Các ô nhập liệu lõm xuống (Inset) chìm vào trong giao diện */
 input, textarea{
   width: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 192, 203, 0.3);
-  border-radius: 4px; /* Vuông vức nhẹ */
+  background: #000000;
+  
+  border-top: 2px solid #331122;
+  border-left: 2px solid #331122;
+  border-right: 2px solid #ffb6c1;
+  border-bottom: 2px solid #ffb6c1;
+  border-radius: 0px;
+  
   padding: 12px;
   color: white;
-  font-size: 14px;
+  font-family: 'VT323', monospace;
+  font-size: 18px;
   outline: none;
-  transition: 0.2s;
 }
 
 textarea{
@@ -210,34 +248,56 @@ textarea{
 }
 
 input:focus, textarea:focus{
-  border-color: #ff5ca8;
-  box-shadow: 0 0 15px rgba(255, 92, 168, 0.25);
+  border-top: 2px solid #ff5ca8;
+  border-left: 2px solid #ff5ca8;
+  border-right: 2px solid #ffd3e8;
+  border-bottom: 2px solid #ffd3e8;
+  box-shadow: none;
 }
 
 input::placeholder, textarea::placeholder{
   color: #66525c;
 }
 
+/* Nút Submit lồi lên cứng cáp (Outset) */
 button{
   margin-top: 5px;
-  height: 46px;
-  border: 1px solid #ff84b7;
-  border-radius: 4px;
+  height: 44px;
+  
+  border-top: 2px solid #ffd3e8;
+  border-left: 2px solid #ffd3e8;
+  border-right: 2px solid #331122;
+  border-bottom: 2px solid #331122;
+  border-radius: 0px;
+  
   background: #050505;
   color: #ff84b7;
-  font-size: 14px;
+  font-family: 'VT323', monospace;
+  font-size: 18px;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.2s;
 }
 
 button:hover{
   background: #ff5ca8;
   color: black;
-  box-shadow: 0 0 20px rgba(255, 92, 168, 0.4);
+  box-shadow: none;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #000;
+  border-bottom: 2px solid #000;
 }
 
-/* CỘT 3: MUSIC PLAYER (Phía bên phải) */
+/* Hiệu ứng lún nút khi nhấn chuột */
+button:active {
+  border-top: 2px solid #331122;
+  border-left: 2px solid #331122;
+  border-right: 2px solid #ffd3e8;
+  border-bottom: 2px solid #ffd3e8;
+  padding-top: 2px;
+}
+
+/* CỘT 3: MUSIC PLAYER */
 .preview-section{
   padding: 25px;
   display: flex;
@@ -246,50 +306,25 @@ button:hover{
 
 .music-player-card{
   width: 100%;
-  background: rgba(5, 5, 5, 0.6);
-  border: 1px solid rgba(255, 182, 193, 0.4);
-  border-radius: 4px;
+  background: rgba(5, 5, 5, 0.8);
+  /* Khung bọc card nhạc cũng nổi khối nhẹ */
+  border-top: 2px solid #ffd3e8;
+  border-left: 2px solid #ffd3e8;
+  border-right: 2px solid #55223c;
+  border-bottom: 2px solid #55223c;
+  border-radius: 0px;
   padding: 16px;
 }
 
 .player-header {
   display: flex;
   justify-content: space-between;
-  font-size: 11px;
+  font-size: 14px;
   color: #ff84b7;
   text-transform: uppercase;
   margin-bottom: 12px;
-  border-bottom: 1px solid rgba(255, 182, 193, 0.2);
+  border-bottom: 2px dashed rgba(255, 182, 193, 0.2);
   padding-bottom: 4px;
-}
-
-/* Giả lập khung đĩa CD/Cover */
-.track-cover {
-  width: 100%;
-  height: 120px;
-  background: #111;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.vinyl-effect {
-  position: absolute;
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  border: 2px dashed rgba(255, 132, 183, 0.2);
-}
-
-.melody-icon {
-  font-size: 32px;
-  color: #ff5ca8;
-  z-index: 2;
-  text-shadow: 0 0 10px rgba(255, 92, 168, 0.6);
 }
 
 .track-info {
@@ -298,42 +333,47 @@ button:hover{
 }
 
 .song-title {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
   color: #fff;
 }
 
 .artist-name {
-  font-size: 12px;
+  font-size: 15px;
   color: #ff84b7;
 }
 
-/* Thanh Progress thời gian */
+/* Thanh Progress thời gian dạng phẳng thô */
 .player-progress {
   margin-bottom: 14px;
 }
 
 .progress-bar {
   width: 100%;
-  height: 4px;
-  background: #222;
-  border-radius: 2px;
-  overflow: hidden;
+  height: 8px; /* Tăng độ dày giống rãnh Windows cũ */
+  background: #111;
+  border-top: 1px solid #331122;
+  border-left: 1px solid #331122;
+  border-right: 1px solid #ffb6c1;
+  border-bottom: 1px solid #ffb6c1;
+  border-radius: 0px;
+  position: relative;
 }
 
 .progress-fill {
-  width: 35%; /* Giả lập đang chạy ở 35% */
+  width: 0%; 
   height: 100%;
   background: #ff5ca8;
+  box-shadow: none; /* Bỏ bóng sáng mịn nhòe */
+  transition: width 0.1s linear;
 }
 
 .time-stamp {
   display: flex;
   justify-content: space-between;
-  font-size: 10px;
+  font-size: 13px;
   color: #666;
   margin-top: 4px;
-  font-family: monospace;
 }
 
 /* Cụm nút Playback */
@@ -346,12 +386,17 @@ button:hover{
 
 .ctrl-btn {
   background: #111;
-  border: 1px solid #ff84b7;
   color: #ff84b7;
-  padding: 4px 10px;
-  font-size: 11px;
+  padding: 4px 12px;
+  font-family: 'VT323', monospace;
+  font-size: 14px;
   cursor: pointer;
-  border-radius: 2px;
+  
+  border-top: 1px solid #ffd3e8;
+  border-left: 1px solid #ffd3e8;
+  border-right: 1px solid #331122;
+  border-bottom: 1px solid #331122;
+  border-radius: 0px;
 }
 
 .ctrl-btn:hover {
@@ -359,26 +404,34 @@ button:hover{
   color: black;
 }
 
+.ctrl-btn:active {
+  border-top: 1px solid #331122;
+  border-left: 1px solid #331122;
+  border-right: 1px solid #ffd3e8;
+  border-bottom: 1px solid #ffd3e8;
+}
+
 .ctrl-btn.play {
   font-weight: bold;
-  padding: 4px 16px;
+  padding: 4px 18px;
 }
 
 /* Ô hiển thị lời nhắn lồng bên dưới Player */
 .dedication-note {
   background: rgba(255, 105, 180, 0.05);
-  border-left: 2px solid #ff5ca8;
+  border-left: 3px solid #ff5ca8;
   padding: 10px;
-  font-size: 13px;
+  font-size: 16px;
   font-style: italic;
   color: #fff3f8;
-  line-height: 1.5;
+  line-height: 1.4;
+  border-radius: 0px;
 }
 
 .dedication-from {
   display: block;
   text-align: right;
-  font-size: 11px;
+  font-size: 13px;
   color: #ff84b7;
   margin-top: 5px;
   font-style: normal;
@@ -394,31 +447,33 @@ button:hover{
   }
   .widgets-section, .form-section {
     border-right: none;
-    border-bottom: 1px dashed rgba(255, 182, 193, 0.3);
+    border-bottom: 2px dashed rgba(255, 182, 193, 0.3);
   }
 }
 
-/* --- GIAO DIỆN KHUNG AVATAR NGOÀI MÀN HÌNH CHÍNH (Đã sửa) --- */
+/* --- GIAO DIỆN KHUNG AVATAR NGOÀI MÀN HÌNH CHÍNH --- */
 .avatar-preview-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
   padding: 10px 0;
-  width: 100%; /* Giả định trả lại mặc định flex cho cột widgets */
+  width: 100%; 
   height: auto;
   border-radius: 0;
   overflow: visible;
 }
 
-/* Khung chứa ảnh gốc và layer sticker ngoài màn chính */
 .avatar-view-wrapper {
   position: relative;
   width: 100px;
   height: 100px;
-  border: 2px solid #ff84b7;
   background: #000;
-  overflow: hidden; 
+  /* Viền lõm 3D bảo vệ ảnh */
+  border-top: 2px solid #331122;
+  border-left: 2px solid #331122;
+  border-right: 2px solid #ffb6c1;
+  border-bottom: 2px solid #ffb6c1;
 }
 
 .avatar-view-wrapper img {
@@ -427,18 +482,17 @@ button:hover{
   object-fit: cover;
 }
 
-/* Lớp phủ chứa sticker dính lên ảnh */
 .sticker-layer {
   position: absolute;
   inset: 0;
-  pointer-events: none; /* Ngoài màn chính không cho tương tác kéo */
+  pointer-events: none; 
 }
 
 /* --- CSS CHO POPUP (MODAL CHỈNH SỬA) --- */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(5px);
   display: flex;
   justify-content: center;
@@ -454,13 +508,19 @@ button:hover{
   pointer-events: auto;
 }
 
+/* Biến Modal thành một cửa sổ Windows nhỏ thực tế */
 .modal-window {
   width: 100%;
   max-width: 550px;
   background: #0f0f0f;
-  border: 2px solid #ff84b7;
-  border-radius: 4px;
-  box-shadow: 0 0 30px rgba(255, 105, 180, 0.4);
+  
+  border-top: 3px solid #ffd3e8;
+  border-left: 3px solid #ffd3e8;
+  border-right: 3px solid #55223c;
+  border-bottom: 3px solid #55223c;
+  border-radius: 0px;
+  
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.6);
   overflow: hidden;
 }
 
@@ -476,11 +536,10 @@ button:hover{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-right: 1px dashed rgba(255, 182, 193, 0.2);
+  border-right: 2px dashed rgba(255, 182, 193, 0.2);
   padding-right: 20px;
 }
 
-/* Khung to trong popup chỉnh sửa (Giữ nguyên 160px vuông vức cá tính) */
 .edit-avatar-wrapper {
   position: relative;
   width: 160px;   
@@ -488,6 +547,7 @@ button:hover{
   border: 2px dashed #ff5ca8;
   background: #000;
   overflow: hidden; 
+  border-radius: 0px;
 }
 
 .edit-avatar-wrapper img {
@@ -498,7 +558,6 @@ button:hover{
   -webkit-user-drag: none;
 }
 
-/* Layer quản lý sticker riêng trong popup */
 #modal-sticker-layer, #main-sticker-layer {
   position: absolute;
   top: 0;
@@ -509,16 +568,17 @@ button:hover{
   pointer-events: auto; 
 }
 
-/* Các sticker emoji khi tạo ra */
+/* Sticker font chữ thô sần viền đen dày */
 .placed-sticker {
   position: absolute;
-  font-size: 24px;
+  font-family: 'VT323', monospace !important;
+  font-size: 26px;
   transform: translate(-50%, -50%);
   user-select: none;
   -webkit-user-select: none;
   cursor: move;
   z-index: 20;
-  touch-action: none; /* Chống cuộn màn hình trên Mobile */
+  touch-action: none; 
   display: inline-block;
   white-space: nowrap;
 }
@@ -530,7 +590,7 @@ button:hover{
 }
 
 .option-group h3 {
-  font-size: 12px;
+  font-size: 14px;
   color: #ff84b7;
   text-transform: uppercase;
   margin-bottom: 8px;
@@ -546,20 +606,20 @@ button:hover{
 .preset-item {
   width: 40px;
   height: 40px;
-  border: 1px solid #333;
+  border: 2px solid #331122;
   cursor: pointer;
+  border-radius: 0px;
 }
 .preset-item.active {
-  border-color: #ff5ca8;
-  box-shadow: 0 0 8px rgba(255, 92, 168, 0.6);
+  border: 2px solid #ff5ca8;
 }
 
 .file-upload-btn {
   display: inline-block;
-  font-size: 11px;
+  font-size: 14px;
   color: #ffd3e8;
   cursor: pointer;
-  font-family: monospace;
+  text-decoration: underline;
 }
 .file-upload-btn:hover {
   color: #ff5ca8;
@@ -573,51 +633,56 @@ button:hover{
 }
 .sticker-item {
   background: #1a1a1a;
-  border: 1px solid #333;
+  border: 1px solid #ff84b7;
   padding: 4px 8px;
-  font-size: 11px;
+  font-size: 13px;
   cursor: pointer;
-  border-radius: 2px;
+  border-radius: 0px;
   color: #fff;
 }
 .sticker-item:hover {
-  border-color: #ff84b7;
-  background: rgba(255, 132, 183, 0.1);
+  background: #ff5ca8;
+  color: black;
 }
 
-/* Nút lưu thay đổi */
+/* Nút lưu thay đổi trong popup gờ nổi */
 .win-action-btn {
   margin-top: 10px;
   height: 38px;
   background: #ff5ca8;
   color: #000;
-  border: none;
+  
+  border-top: 2px solid #ffd3e8;
+  border-left: 2px solid #ffd3e8;
+  border-right: 2px solid #331122;
+  border-bottom: 2px solid #331122;
+  border-radius: 0px;
+  
+  font-family: 'VT323', monospace;
   font-weight: bold;
   cursor: pointer;
-  font-size: 13px;
-  border-radius: 2px;
-  transition: 0.2s;
+  font-size: 16px;
 }
 .win-action-btn:hover {
   background: #ff84b7;
-  box-shadow: 0 0 15px rgba(255, 132, 183, 0.5);
+}
+.win-action-btn:active {
+  border-top: 2px solid #331122;
+  border-left: 2px solid #331122;
+  border-right: 2px solid #ffd3e8;
+  border-bottom: 2px solid #ffd3e8;
 }
 
-/* Nút Edit Profile text link */
 .edit-btn {
   background: transparent;
   border: none;
   color: #ff84b7;
-  font-size: 12px;
+  font-size: 16px;
   cursor: pointer;
-  font-family: monospace;
-  transition: all 0.2s ease;
-  padding: 2px 6px;
+  text-decoration: underline;
 }
 .edit-btn:hover {
   color: #ff3399;
-  text-shadow: 0 0 8px rgba(255, 51, 153, 0.8);
-  transform: scale(1.05);
 }
 
 @media(max-width: 500px) {
@@ -626,81 +691,18 @@ button:hover{
   }
   .modal-preview-side {
     border-right: none;
-    border-bottom: 1px dashed rgba(255, 182, 193, 0.2);
+    border-bottom: 2px dashed rgba(255, 182, 193, 0.2);
     padding-right: 0;
     padding-bottom: 20px;
   }
 }
+
 /* --- CSS MUSIC PLAYER THỰC TẾ --- */
-.track-cover {
-  width: 100%;
-  height: 160px; /* Tăng chiều cao một chút cho đĩa tròn đẹp */
-  background: #090909;
-  border: 1px dashed rgba(255, 182, 193, 0.3);
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-/* Thiết kế đĩa Vinyl kiểu cổ điển */
-.vinyl-disk {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #222 25%, #111 26%, #111 35%, #050505 36%);
-  box-shadow: 0 0 0 4px #1a1a1a, 0 0 10px rgba(0, 0, 0, 0.8);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Tâm đĩa màu hồng Jirai Kei */
-.vinyl-center {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  background: #ff5ca8;
-  border: 3px double #000;
-  box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
-}
-
-/* Hiệu ứng xoay tròn khi nhạc chạy */
-.track-cover.spinning .vinyl-disk {
-  animation: rotateVinyl 4s linear infinite;
-}
-
-@keyframes rotateVinyl {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* Style lại thanh Progress cho mượt */
-.progress-bar {
-  width: 100%;
-  height: 6px;
-  background: #111;
-  border: 1px solid rgba(255, 182, 193, 0.2);
-  border-radius: 3px;
-  position: relative;
-}
-
-.progress-fill {
-  width: 0%; /* Bắt đầu từ 0% và tăng dần bằng JS */
-  height: 100%;
-  background: #ff5ca8;
-  box-shadow: 0 0 8px #ff5ca8;
-  transition: width 0.1s linear;
-}
-/* --- HIỆU ỨNG ĐĨA XOAY REAL --- */
 .track-cover {
   width: 100%;
   height: 160px;
   background: #090909;
-  border: 1px dashed rgba(255, 182, 193, 0.3);
+  border: 2px dashed rgba(255, 182, 193, 0.3);
   margin-bottom: 12px;
   display: flex;
   align-items: center;
@@ -708,11 +710,11 @@ button:hover{
   position: relative;
 }
 
-/* Tạo hình chiếc đĩa đĩa Vinyl màu đen */
+/* GIỮ NGUYÊN HOÀN TOÀN BỘ CODES XOAY ĐĨA TRÒN THỰC TẾ CỦA CẬU */
 .vinyl-disk {
   width: 120px;
   height: 120px;
-  border-radius: 50%;
+  border-radius: 50% !important; /* Force tròn để xoay chuẩn */
   background: radial-gradient(circle, #222 25%, #111 26%, #111 35%, #050505 36%);
   box-shadow: 0 0 0 4px #1a1a1a, 0 0 10px rgba(0, 0, 0, 0.8);
   position: relative;
@@ -720,26 +722,61 @@ button:hover{
   align-items: center;
   justify-content: center;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: transform 0.5s ease; /* Tạo cảm giác dừng mượt khi pause */
+  transition: transform 0.5s ease;
 }
 
-/* Tâm đĩa màu hồng Jirai Kei đặc trưng */
 .vinyl-center {
   width: 35px;
   height: 35px;
-  border-radius: 50%;
+  border-radius: 50% !important; /* Force tròn */
   background: #ff5ca8;
   border: 3px double #000;
   box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
 }
 
-/* Khi có class .spinning (do JS kích hoạt khi nhấn Play), đĩa sẽ xoay vô tận */
 .track-cover.spinning .vinyl-disk {
   animation: rotateVinyl 4s linear infinite;
 }
 
-/* Định nghĩa góc xoay từ 0 đến 360 độ */
 @keyframes rotateVinyl {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+/* TITLE BAR KIỂU CỔ ĐIỂN */
+.title-bar{
+  height: 32px; 
+  background: linear-gradient(to right, #ff84b7, #ff5ca8);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  color: black;
+  
+  /* CẬP NHẬT TẠI ĐÂY: To hơn bản cũ một chút nhưng không bị quá cỡ */
+  font-size: 20px;          /* Nhích từ 18px lên 20px vừa xinh */
+  font-weight: 500;         /* Giữ nét chữ thanh thoát, không bị bết chữ */
+  letter-spacing: 0.8px;    /* Giãn nhẹ một xíu cho dễ nhìn */
+  
+  border-bottom: 2px solid #ffb6c1;
+  user-select: none;
+}
+.edit-btn {
+  background: transparent;
+  border: none;
+  color: #ff84b7;
+  
+  /* SỬA TẠI ĐÂY: Nhích size lên một tẹo và giãn chữ cho nét pixel thanh thoát */
+  font-size: 18px;          /* Tăng từ 16px lên 18px cho vừa tầm mắt */
+  font-weight: 500;         /* Giữ nét thanh, tránh bị bết chữ */
+  letter-spacing: 0.5px;    /* Giãn nhẹ một xíu cho dễ đọc */
+  
+  cursor: pointer;
+  text-decoration: underline;
+}
+.edit-btn:hover {
+  color: #ff3399;
+}
+textarea{
+  height: 200px; /* Tăng từ 140px lên 200px (hoặc 210px) để kéo dài ô viết xuống */
+  resize: none;
 }
