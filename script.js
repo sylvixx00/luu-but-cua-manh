@@ -358,4 +358,69 @@ document.addEventListener('DOMContentLoaded', () => {
             audio.play();
         });
     }
+// ========================================================
+    // --- HỆ THỐNG XỬ LÝ LƯU BÚT (KẾT NỐI GOOGLE SHEETS) ---
+    // ========================================================
+
+    // Link Google Apps Script của cậu đã được tự động tích hợp vào đây
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbw6CPhBA05UcVZtlVVSOJPMMlwXO4aS4qdQEnog4GmoykY5v3lanjr9GwoQ_WMfz4AY/exec'; 
+    const submitBtn = document.getElementById('submit-msg-btn');
+    const guestNameInput = document.getElementById('guest-name');
+    const guestMessageInput = document.getElementById('guest-message');
+    const guestSongInput = document.getElementById('guest-song');
+
+    if (submitBtn) {
+        submitBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            const name = guestNameInput.value.trim();
+            const message = guestMessageInput.value.trim();
+            const song = guestSongInput ? guestSongInput.value.trim() : '';
+
+            // Kiểm tra xem bạn bè đã điền đủ các mục bắt buộc chưa
+            if (!name || !message) {
+                alert("Cậu điền thiếu nickname hoặc lời chúc mất rồi! 🥺");
+                return;
+            }
+
+            // Đổi trạng thái nút bấm để tránh người dùng click liên tục gây trùng lặp dữ liệu
+            submitBtn.innerText = "sending... ✉️";
+            submitBtn.disabled = true;
+
+            // Tạo gói dữ liệu đồng bộ chính xác với các cột trên Google Sheets (name, message, song)
+            const dataToSend = {
+                name: name,
+                message: message,
+                song: song
+            };
+
+            // Dùng Fetch API gửi ngầm data lên Google Sheets không cần load lại trang web
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors', // Chế độ chặn lỗi bảo mật chéo trang (CORS) đặc trưng của Google
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(dataToSend)
+            })
+            .then(() => {
+                // Khi gửi thành công, hệ thống tự động thông báo và giải phóng form
+                alert("Gửi lưu bút thành công rồi nè! Cảm ơn cậu nhiều nhaaa ✨");
+                
+                // Xóa sạch nội dung các ô nhập để sẵn sàng cho lượt viết tiếp theo
+                guestNameInput.value = '';
+                guestMessageInput.value = '';
+                if (guestSongInput) guestSongInput.value = '';
+                
+                submitBtn.innerText = "send message";
+                submitBtn.disabled = false;
+            })
+            .catch(error => {
+                console.error('Lỗi kết nối dữ liệu:', error);
+                alert("Hình như có lỗi mạng rồi, cậu kiểm tra lại xem sao nha!");
+                submitBtn.innerText = "send message";
+                submitBtn.disabled = false;
+            });
+        });
+    }
 });
